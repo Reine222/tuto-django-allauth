@@ -9,20 +9,20 @@
 </head>
 <body>
     <div class="wrapper grid-center">
-        <form action="#">
+        <form method="POST" action="#">{% csrf_token %}
             <div class="btns-wrapper">
                 <label for="register" class="btn">login</label>
             </div>
 
             <div class="form-body">
                 <div class="input-wrapper">
-                    <input type="email" id="email" placeholder="email " >
+                    <input name="email" type="email" id="email" placeholder="email " >
                 </div>
                 <div class="input-wrapper">
-                    <input type="password" id="pswd1" placeholder="password " >
+                    <input name="password" type="password" id="pswd1" placeholder="password " >
                 </div>
                 <div>
-                    <button class="submit-btn btn">login</button>
+                    <button type="submit" class="submit-btn btn">login</button>
                 </div>
                 <div>
                     <a href="{% url 'register' %}" class="forgot-password">register</a> 
