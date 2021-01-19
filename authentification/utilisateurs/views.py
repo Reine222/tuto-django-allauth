@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from . import models
+from sms import Message
 # Create your views here.
 
 def login(request):
@@ -13,4 +14,5 @@ def register(request):
 
 
 def profile(request):
+    
     return render(request, 'pages/profile.html')
