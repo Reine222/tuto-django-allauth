@@ -1,0 +1,256 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: #d3b3ee;
+	font-size: 20px;
+}
+
+.grid-center {
+	display: grid;
+	place-items: center;
+}
+
+.wrapper {
+	min-height: 100vh;
+}
+
+input[type="radio"] {
+	display: none;
+}
+.btn {
+	cursor: pointer;
+}
+input,
+button {
+	font-size: inherit;
+}
+
+form {
+	padding: 2em;
+	position: relative;
+	border-radius: 0.5em;
+	overflow: hidden;
+	background: #fafafa;
+
+}
+
+.input-wrapper {
+	margin-top: $input-wrapper-margin-top;
+}
+.btns-wrapper {
+	position: relative;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	display: flex;
+	padding: 0.5em 0;
+	text-transform: capitalize;
+	background: rgba(71, 4, 110, 0.52);
+	+ * {
+		margin-top: 2em;
+	}
+	.btn {
+		flex: 1;
+		display: inline-block;
+		text-align: center;
+		z-index: 1;
+		transition: 300ms;
+		color: #fff;
+		&:before {
+			$s: 10px;
+			content: "";
+			height: $s;
+			width: $s;
+			position: absolute;
+			top: calc(50% - #{$s/2});
+			border-radius: 50%;
+			transition: 200ms;
+			background: #fff;
+			box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+		}
+		&:nth-child(1):before {
+			left: 20px;
+			opacity: 0;
+		}
+		&:nth-child(2):before {
+			right: 20px;
+			// opacity: 0;
+		}
+	}
+
+	&:before {
+		$s: 10px;
+		content: "";
+		position: absolute;
+		height: 100%;
+		background: $indicator-color;
+		top: 100%;
+		top: 00%;
+		border-radius: 0.2em;
+		left: 70%;
+		left: 0%;
+		right: 20%;
+		right: 50%;
+		transition: right 200ms, left 400ms;
+		z-index: 0;
+	}
+}
+
+input {
+	border: 0;
+	background: none;
+	padding: $input-padding-bottom $input-padding-left;
+	outline: 0;
+	&:not(:placeholder-shown) ~ label {
+		transform: translateY(-120%);
+		pointer-events: initial;
+	}
+}
+
+.input-wrapper label {
+	display: block;
+	position: absolute;
+	bottom: $input-padding-bottom;
+	left: $input-padding-left;
+	transition: 300ms;
+	text-transform: capitalize;
+	color: var(--label-and-forgot-color);
+	pointer-events: none;
+}
+
+.input-wrapper {
+	height: 3em;
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	overflow: hidden;
+	&:before {
+		content: "";
+		position: absolute;
+		background-image: linear-gradient(
+			90deg,
+			$pseudo-clr 50%,
+			darken($pseudo-clr, 30) 50%
+		);
+
+		background-size: 200% 100%;
+		bottom: 00%;
+		width: 100%;
+		height: 3px;
+		transition: background-position 300ms;
+	}
+	&:focus-within:before {
+		background-position: -100%;
+	}
+}
+
+.submit-btn {
+	position: relative;
+	z-index: 4; //pour etre en arriere plan par rapport a l'overlay
+	display: block;
+	margin: 1em auto;
+	padding: 0 1em;
+	overflow: hidden;
+	background: rgb(76, 212, 76);
+	border: 0;
+	color: #fff;
+	border-radius: 0.2em;
+	outline: 0;
+	transition: 300ms;
+	&:focus {
+		transform: scale(0.95);
+	}
+	&:active {
+		transform: scale(0.9);
+	}
+
+	span {
+		line-height: 2em;
+	}
+	span.relative {
+		position: relative;
+		display: inline-block;
+		transition: 300ms;
+	}
+	span.absolute {
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+	}
+}
+
+.forgot-password-wrapper {
+	text-align: center;
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: var(--overlay-color);
+		transition: 300ms;
+		z-index: 0;
+	}
+}
+.forgot-password {
+	position: relative;
+	z-index: 3;
+	color: var(--label-and-forgot-color);
+}
+.input-wrapper {
+	transition: 400ms, opacity 200ms;
+}
+
+#login:checked {
+	~ .btns-wrapper .btn:nth-child(1) {
+		&:before {
+			opacity: 1;
+		}
+	}
+	~ .btns-wrapper .btn:nth-child(2) {
+		&:before {
+			opacity: 0;
+		}
+	}
+	~ .btns-wrapper:before {
+		transition: left 200ms, right 400ms;
+		left: 20%;
+		left: 50%;
+		right: 70%;
+		right: 0%;
+	}
+	~ .form-body {
+		--label-and-forgot-color: rgb(105, 95, 95);
+		--overlay-color: #{$overlay-color1};
+		.pswd2 {
+			height: 0;
+			margin-top: 0;
+			opacity: 0;
+		}
+
+		.submit-btn span.relative {
+			transform: translateY(100%);
+		}
+		.submit-btn {
+			background: rgb(100, 100, 226);
+		}
+
+		.input-wrapper:before {
+			$pseudo-clr: #a0a2f1;
+			background-image: linear-gradient(
+				90deg,
+				$pseudo-clr 50%,
+				darken($pseudo-clr, 30) 50%
+			);
+		}
+	}
+	
+}
+
+
