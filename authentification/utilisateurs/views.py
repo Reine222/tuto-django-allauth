@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from . import models
 from sms import Message
+from django.contrib.auth.models import User
 # Create your views here.
 
 def login(request):
@@ -8,6 +9,19 @@ def login(request):
 
 
 def register(request):
+    if request.method == "POST" :
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        repassword = request.POST.get('repassword')
+        if password == repassword :
+            user = User()
+            user.email = email
+            user.username = email
+            user.password = password
+            user.set_password(user.password)
+            user.save()
+            print('OK OK OK OK OK OK')
+        
     return render(request, 'pages/register.html')
 
 

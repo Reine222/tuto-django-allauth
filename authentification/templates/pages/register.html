@@ -9,23 +9,23 @@
 </head>
 <body>
     <div class="wrapper grid-center">
-        <form action="#">
+        <form method="POST" action="#">{% csrf_token %}
             <input type="radio" name="radio" id="register" checked  >
             <div class="btns-wrapper">
                 <label for="register" class="btn">register</label>
             </div>
             <div class="form-body">
                 <div class="input-wrapper">
-                    <input type="email" id="email" placeholder="email " >
+                    <input name="email" type="email" id="email" placeholder="email " >
                 </div>
                 <div class="input-wrapper">
-                    <input type="password" id="pswd1" placeholder="password " >
+                    <input name="password" type="password" id="pswd1" placeholder="password " >
                 </div>
                 <div class="input-wrapper pswd2">
-                    <input type="password" id="pswd2" placeholder="confirm password ">
+                    <input name="repassword" type="password" id="pswd2" placeholder="confirm password ">
                 </div>
                 <div>
-                    <button class="submit-btn btn">register</button>
+                    <button type="submit" class="submit-btn btn">register</button>
                 </div>
                 <div>
                     <a href="#" class="forgot-password">forgot your password?</a>
